@@ -20,7 +20,7 @@ class TicketControl {
     siguiente() {
 
         this.ultimo += 1;
-        grabarArchivo();
+        this.grabarArchivo();
 
         return `Ticket ${ this.ultimo }`;
     }
