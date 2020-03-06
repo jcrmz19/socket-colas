@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 class Ticket {
 
@@ -17,7 +18,16 @@ class TicketControl {
         this.tickets = [];
         this.ultimos4 = [];
 
-        let data = require('../data/data.json');
+        let pathData = path.resolve( __dirname, '../data/data.json');
+
+        let data;
+
+        if ( fs.existsSync(pathData) ) {
+            data = require('../data/data.json');
+        } else {
+            this.grabarArchivo();
+            data = require('../data/data.json');
+        }
 
         if ( data.hoy === this.hoy ) {
             this.ultimo = data.ultimo;
