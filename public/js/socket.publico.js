@@ -27,6 +27,15 @@ socket.on('estadoActual', function(data){
     actualizaHTML( data.ultimos4 );
 });
 
+socket.on('ultimos4', function(data){
+    console.log(data);
+
+    audio = new Audio('audio/new-ticket.mp3');
+    audio.play();
+
+    actualizaHTML( data.ultimos4 );
+});
+
 function actualizaHTML( ultimos4 ) {
 
     for ( var i=0; i< ultimos4.length; i++ ) {
